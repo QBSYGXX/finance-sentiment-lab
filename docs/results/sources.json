@@ -1,0 +1,37 @@
+[
+  {
+    "repository": "supersymmetry-technologies/BBT-FinCUGE-Applications",
+    "git_blob": "29998e5571cc664f3f8eb28cfd6caa054ba10028",
+    "path": "data/raw/train_list.json",
+    "sha256": "213b308d7e648bbc57ab57ee7d868d981939ce881f8027b215659e5ff34515bd",
+    "bytes": 1085511
+  },
+  {
+    "repository": "supersymmetry-technologies/BBT-FinCUGE-Applications",
+    "git_blob": "bd5fbb00c1e0c84fc5a133f61e6e5d0eb16b3727",
+    "path": "data/raw/eval_list.json",
+    "sha256": "80cdffaefba9696ecdf1fcb1cccf5052779c33e976195c19502c2130d7b454b6",
+    "bytes": 135818
+  },
+  {
+    "repository": "supersymmetry-technologies/BBT-FinCUGE-Applications",
+    "git_blob": "17116c216ae52aa40925139be748005e1d0a68a2",
+    "path": "data/raw/UPSTREAM_README.md",
+    "sha256": "0fe2c518c04d06a62674bc712fa7b4338c7cfba8a31d7f6c8dd6826b8a878846",
+    "bytes": 16472
+  },
+  {
+    "repository": "649453932/Chinese-Text-Classification-Pytorch",
+    "git_blob": "7e8cc5f96f92541ceefa6aa63dfafe0d1c6263f3",
+    "path": "third_party/TextCNN.original.py",
+    "sha256": "20b2f66ec3325d49c1b57f1e0f07fc5b10cfb817562f7c4594d6d43bff2e9fa1",
+    "bytes": 3506
+  },
+  {
+    "repository": "649453932/Chinese-Text-Classification-Pytorch",
+    "git_blob": "434bb7651a77791c223eee550b94201e334b4af6",
+    "path": "third_party/LICENSE.TextCNN",
+    "sha256": "c59122f7624279cb08820f671fc5a30fb72d97fbe84fc2f1603ba4df70967ad4",
+    "bytes": 1066
+  }
+]

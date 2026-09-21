@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>金融文本情绪实验室</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header><div class="shell brand"><div><span class="eyebrow">FINFE / RESEARCH WORKSPACE</span><h1>金融文本情绪实验室</h1></div><span id="connection" class="status">正在连接</span></div></header>
+<main class="shell">
+<nav aria-label="视图"><button class="tab active" data-view="analyze" aria-selected="true">文本分析</button><button class="tab" data-view="evaluate" aria-selected="false">模型评估</button><button class="tab" data-view="errors" aria-selected="false">误判记录</button></nav>
+<section id="analyze" class="view">
+  <div class="workspace">
+    <div class="editor"><div class="section-title"><h2>待分析文本</h2><span>金融社交短评</span></div>
+      <label class="sr-only" for="text">待分析文本</label><textarea id="text" maxlength="2000" placeholder="输入金融文本"></textarea>
+      <div class="editor-meta"><span id="charcount">0 / 2000</span><span>模型输入上限 128 字</span></div>
+      <div class="actions"><button id="submit" class="primary"><img src="/icons/play.svg" alt="">分析</button><button id="clear" class="icon-button" title="清空文本" aria-label="清空文本"><img src="/icons/rotate-ccw.svg" alt=""></button><label for="sample" class="sr-only">示例文本</label><select id="sample"><option value="">示例文本</option><option value="0">看好后市</option><option value="1">亏损感受</option><option value="2">暂时观望</option></select></div>
+      <p id="message" role="status"></p>
+      <div class="dataset"><h3>本轮实验</h3><dl><div><dt>训练集</dt><dd id="trainCount">--</dd></div><div><dt>验证集</dt><dd id="valCount">--</dd></div><div><dt>测试集</dt><dd id="testCount">--</dd></div></dl><p>FinFE 金融社交文本 · 自定义去重划分</p></div>
+    </div>
+    <div class="results"><div class="section-title"><h2>模型判断</h2><span>消极 / 中性 / 积极</span></div><div id="predictions" class="empty">尚无分析结果</div><p class="muted">模型分数未经概率校准。低于 0.60 标记为待复核；结果不代表价格预测。</p></div>
+  </div>
+</section>
+<section id="evaluate" class="view" hidden><div class="section-title"><h2>保留测试集结果</h2><a class="download" href="/predictions.csv" download><img src="/icons/download.svg" alt="">导出逐条结果</a></div><div class="table-wrap"><table><thead><tr><th>模型</th><th>验证 Macro-F1</th><th>测试准确率</th><th>测试 Macro-F1</th></tr></thead><tbody id="metrics"></tbody></table></div><p id="protocol" class="muted"></p><div class="figure"><h3>混淆矩阵</h3><img src="/confusion.png" alt="三个模型在测试集上的混淆矩阵" loading="lazy"></div><div class="figure learning"><h3>验证集学习曲线</h3><img src="/learning.png" alt="TextCNN两个配置的验证集Macro-F1曲线" loading="lazy"></div><div id="audit" class="audit"></div></section>
+<section id="errors" class="view" hidden><div class="section-title"><h2>误判记录</h2><span id="errorCount"></span></div><div class="filters"><label>真实标签 <select id="labelFilter"><option value="">全部</option><option>消极</option><option>中性</option><option>积极</option></select></label><label>模型 <select id="modelFilter"><option value="">任一模型误判</option><option value="linear">TF-IDF + LR</option><option value="cnn_plain">TextCNN</option><option value="cnn_weighted">TextCNN 加权</option></select></label><input id="query" type="search" aria-label="搜索误判文本" placeholder="搜索文本"></div><div class="table-wrap"><table class="error-table"><thead><tr><th>文本</th><th>标注</th><th>TF-IDF + LR</th><th>TextCNN</th><th>TextCNN 加权</th></tr></thead><tbody id="errorRows"></tbody></table></div><div class="pager"><button id="prev">上一页</button><span id="pageInfo"></span><button id="next">下一页</button></div></section>
+<footer>本地训练 · 单种子探索实验 · 金融社交文本场景</footer>
+</main><script src="/app.js"></script></body></html>

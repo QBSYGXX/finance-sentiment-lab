@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.cmd text eol=crlf
+*.png binary
+# prepare.py verifies these against the exact upstream Git blob bytes.
+third_party/TextCNN.original.py -text
+third_party/LICENSE.TextCNN -text

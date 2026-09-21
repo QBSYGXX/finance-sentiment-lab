@@ -1,0 +1,559 @@
+{
+  "created_utc": "2026-09-14T10:27:51.506658+00:00",
+  "seed": 42,
+  "labels": [
+    "消极",
+    "中性",
+    "积极"
+  ],
+  "audit": {
+    "raw_train": 16157,
+    "raw_eval": 2020,
+    "duplicate_rows_removed": 4649,
+    "cross_source_overlaps": 864,
+    "conflicting_texts_removed": 1010,
+    "conflicting_rows_removed": 2038,
+    "split_counts": {
+      "train": 8313,
+      "validation": 1468,
+      "test": 1709
+    },
+    "class_counts": {
+      "train": {
+        "消极": 1930,
+        "中性": 1742,
+        "积极": 4641
+      },
+      "validation": {
+        "消极": 341,
+        "中性": 308,
+        "积极": 819
+      },
+      "test": {
+        "消极": 461,
+        "中性": 437,
+        "积极": 811
+      }
+    },
+    "split_intersections": 0,
+    "max_characters": 128,
+    "seed": 42,
+    "protocol": "Source train -> stratified train/validation; source eval -> held-out test. Deduplicated by normalized truncated input. Not the official leaderboard protocol.",
+    "domain": "Financial social-media comments; no separate headline/body or timestamps."
+  },
+  "models": {
+    "linear": {
+      "training": {
+        "trials": [
+          {
+            "C": 1.0,
+            "validation_macro_f1": 0.6888073594197951,
+            "seconds": 1.0559055999910925
+          },
+          {
+            "C": 4.0,
+            "validation_macro_f1": 0.6900855775389699,
+            "seconds": 1.0018027999904007
+          }
+        ]
+      },
+      "validation_macro_f1": 0.6900855775389699,
+      "test": {
+        "accuracy": 0.7396138092451726,
+        "macro_f1": 0.7089219308477982,
+        "confusion_matrix": [
+          [
+            347,
+            72,
+            42
+          ],
+          [
+            78,
+            226,
+            133
+          ],
+          [
+            53,
+            67,
+            691
+          ]
+        ],
+        "per_class": {
+          "消极": {
+            "precision": 0.7259414225941423,
+            "recall": 0.7527114967462039,
+            "f1-score": 0.739084132055378,
+            "support": 461.0
+          },
+          "中性": {
+            "precision": 0.6191780821917808,
+            "recall": 0.517162471395881,
+            "f1-score": 0.5635910224438903,
+            "support": 437.0
+          },
+          "积极": {
+            "precision": 0.7979214780600462,
+            "recall": 0.8520345252774353,
+            "f1-score": 0.8240906380441264,
+            "support": 811.0
+          },
+          "accuracy": 0.7396138092451726,
+          "macro avg": {
+            "precision": 0.7143469942819899,
+            "recall": 0.7073028311398399,
+            "f1-score": 0.7089219308477982,
+            "support": 1709.0
+          },
+          "weighted avg": {
+            "precision": 0.7327993776713898,
+            "recall": 0.7396138092451726,
+            "f1-score": 0.7345491920066096,
+            "support": 1709.0
+          }
+        }
+      }
+    },
+    "cnn_plain": {
+      "training": {
+        "history": [
+          {
+            "epoch": 1,
+            "train_loss": 0.9033675424734006,
+            "validation_macro_f1": 0.5278313546117862,
+            "validation_accuracy": 0.6641689373297003
+          },
+          {
+            "epoch": 2,
+            "train_loss": 0.7103328659734356,
+            "validation_macro_f1": 0.5986301398066104,
+            "validation_accuracy": 0.6975476839237057
+          },
+          {
+            "epoch": 3,
+            "train_loss": 0.628059883582582,
+            "validation_macro_f1": 0.6092389424982673,
+            "validation_accuracy": 0.7118528610354223
+          },
+          {
+            "epoch": 4,
+            "train_loss": 0.5622849090498276,
+            "validation_macro_f1": 0.6257871258464198,
+            "validation_accuracy": 0.7159400544959128
+          },
+          {
+            "epoch": 5,
+            "train_loss": 0.5103236917595879,
+            "validation_macro_f1": 0.6362431072362602,
+            "validation_accuracy": 0.7193460490463215
+          },
+          {
+            "epoch": 6,
+            "train_loss": 0.45051609493256994,
+            "validation_macro_f1": 0.6435682508145562,
+            "validation_accuracy": 0.7227520435967303
+          }
+        ],
+        "best_epoch": 6,
+        "validation_macro_f1": 0.6435682508145562,
+        "seconds": 354.65850160000264,
+        "peak_allocated_vram_mib": 106.130859375,
+        "parameters": 271299,
+        "class_weighted": false
+      },
+      "validation_macro_f1": 0.6435682508145562,
+      "test": {
+        "accuracy": 0.6939730836746636,
+        "macro_f1": 0.6495578078587506,
+        "confusion_matrix": [
+          [
+            297,
+            68,
+            96
+          ],
+          [
+            65,
+            175,
+            197
+          ],
+          [
+            40,
+            57,
+            714
+          ]
+        ],
+        "per_class": {
+          "消极": {
+            "precision": 0.7388059701492538,
+            "recall": 0.6442516268980477,
+            "f1-score": 0.6882966396292005,
+            "support": 461.0
+          },
+          "中性": {
+            "precision": 0.5833333333333334,
+            "recall": 0.40045766590389015,
+            "f1-score": 0.47489823609226595,
+            "support": 437.0
+          },
+          "积极": {
+            "precision": 0.7090367428003972,
+            "recall": 0.8803945745992602,
+            "f1-score": 0.7854785478547854,
+            "support": 811.0
+          },
+          "accuracy": 0.6939730836746636,
+          "macro avg": {
+            "precision": 0.677058682094328,
+            "recall": 0.6417012891337327,
+            "f1-score": 0.6495578078587506,
+            "support": 1709.0
+          },
+          "weighted avg": {
+            "precision": 0.6849239422566382,
+            "recall": 0.6939730836746636,
+            "f1-score": 0.6798469177013533,
+            "support": 1709.0
+          }
+        }
+      }
+    },
+    "cnn_weighted": {
+      "training": {
+        "history": [
+          {
+            "epoch": 1,
+            "train_loss": 1.0134668460710232,
+            "validation_macro_f1": 0.598814777342335,
+            "validation_accuracy": 0.6519073569482289
+          },
+          {
+            "epoch": 2,
+            "train_loss": 0.8028045172196898,
+            "validation_macro_f1": 0.6222738985360141,
+            "validation_accuracy": 0.6553133514986376
+          },
+          {
+            "epoch": 3,
+            "train_loss": 0.7074019624038851,
+            "validation_macro_f1": 0.6462998245991937,
+            "validation_accuracy": 0.7050408719346049
+          },
+          {
+            "epoch": 4,
+            "train_loss": 0.6308670162251175,
+            "validation_macro_f1": 0.6435796982896826,
+            "validation_accuracy": 0.6818801089918256
+          },
+          {
+            "epoch": 5,
+            "train_loss": 0.5680808157363294,
+            "validation_macro_f1": 0.6366351987483768,
+            "validation_accuracy": 0.6852861035422343
+          }
+        ],
+        "best_epoch": 3,
+        "validation_macro_f1": 0.6462998245991937,
+        "seconds": 293.7039133000071,
+        "peak_allocated_vram_mib": 108.20458984375,
+        "parameters": 271299,
+        "class_weighted": true
+      },
+      "validation_macro_f1": 0.6462998245991937,
+      "test": {
+        "accuracy": 0.6834406085430076,
+        "macro_f1": 0.6514936199831438,
+        "confusion_matrix": [
+          [
+            313,
+            75,
+            73
+          ],
+          [
+            91,
+            207,
+            139
+          ],
+          [
+            76,
+            87,
+            648
+          ]
+        ],
+        "per_class": {
+          "消极": {
+            "precision": 0.6520833333333333,
+            "recall": 0.6789587852494577,
+            "f1-score": 0.665249734325186,
+            "support": 461.0
+          },
+          "中性": {
+            "precision": 0.5609756097560976,
+            "recall": 0.47368421052631576,
+            "f1-score": 0.5136476426799007,
+            "support": 437.0
+          },
+          "积极": {
+            "precision": 0.7534883720930232,
+            "recall": 0.7990135635018496,
+            "f1-score": 0.7755834829443446,
+            "support": 811.0
+          },
+          "accuracy": 0.6834406085430076,
+          "macro avg": {
+            "precision": 0.6555157717274848,
+            "recall": 0.6505521864258744,
+            "f1-score": 0.6514936199831438,
+            "support": 1709.0
+          },
+          "weighted avg": {
+            "precision": 0.6769080327077375,
+            "recall": 0.6834406085430076,
+            "f1-score": 0.6788428040040322,
+            "support": 1709.0
+          }
+        }
+      }
+    }
+  },
+  "selected_cnn": "cnn_weighted",
+  "selection_rule": "Validation macro-F1 only; held-out test evaluated after training and selection.",
+  "data_hashes": {
+    "train": "9bbfd8de48915f1ebdd0ad4a744c9f631f733011b502f17114544f6a57b7455d",
+    "validation": "6fe747e0e9946ccb11e81e9173e8779f29f8934aca7cf9c00417c0f913b2c09a",
+    "test": "980adfe694ef8c7d88f668e8643f320b843e2d46aefd3ac86a31a57c9688f1e4"
+  },
+  "environment": {
+    "torch": "2.11.0+cu128",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU"
+  },
+  "limitations": [
+    "Single seed exploratory study",
+    "Financial social comments, not news or stock-return labels",
+    "Conflict removal changes the evaluation population",
+    "Model scores are not calibrated probabilities"
+  ],
+  "majority_baseline": {
+    "accuracy": 0.4745465184318315,
+    "macro_f1": 0.21455026455026457,
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        461
+      ],
+      [
+        0,
+        0,
+        437
+      ],
+      [
+        0,
+        0,
+        811
+      ]
+    ],
+    "per_class": {
+      "消极": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 461.0
+      },
+      "中性": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 437.0
+      },
+      "积极": {
+        "precision": 0.4745465184318315,
+        "recall": 1.0,
+        "f1-score": 0.6436507936507937,
+        "support": 811.0
+      },
+      "accuracy": 0.4745465184318315,
+      "macro avg": {
+        "precision": 0.1581821728106105,
+        "recall": 0.3333333333333333,
+        "f1-score": 0.21455026455026457,
+        "support": 1709.0
+      },
+      "weighted avg": {
+        "precision": 0.22519439815577258,
+        "recall": 0.4745465184318315,
+        "f1-score": 0.3054422432128693,
+        "support": 1709.0
+      }
+    }
+  },
+  "seconds": 651.0405851000105,
+  "selected_model": "linear",
+  "negation_slice": {
+    "count": 557,
+    "definition": "Contains 不/没/未/无/别; exploratory diagnostic only",
+    "models": {
+      "linear": {
+        "accuracy": 0.7073608617594255,
+        "macro_f1": 0.6765042706587153,
+        "confusion_matrix": [
+          [
+            130,
+            32,
+            17
+          ],
+          [
+            41,
+            66,
+            34
+          ],
+          [
+            23,
+            16,
+            198
+          ]
+        ],
+        "per_class": {
+          "消极": {
+            "precision": 0.6701030927835051,
+            "recall": 0.7262569832402235,
+            "f1-score": 0.6970509383378016,
+            "support": 179.0
+          },
+          "中性": {
+            "precision": 0.5789473684210527,
+            "recall": 0.46808510638297873,
+            "f1-score": 0.5176470588235295,
+            "support": 141.0
+          },
+          "积极": {
+            "precision": 0.7951807228915663,
+            "recall": 0.8354430379746836,
+            "f1-score": 0.8148148148148148,
+            "support": 237.0
+          },
+          "accuracy": 0.7073608617594255,
+          "macro avg": {
+            "precision": 0.681410394698708,
+            "recall": 0.6765950425326285,
+            "f1-score": 0.6765042706587153,
+            "support": 557.0
+          },
+          "weighted avg": {
+            "precision": 0.7002475114558654,
+            "recall": 0.7073608617594255,
+            "f1-score": 0.7017441011987348,
+            "support": 557.0
+          }
+        }
+      },
+      "cnn_plain": {
+        "accuracy": 0.6696588868940754,
+        "macro_f1": 0.6319970955365412,
+        "confusion_matrix": [
+          [
+            112,
+            25,
+            42
+          ],
+          [
+            30,
+            56,
+            55
+          ],
+          [
+            14,
+            18,
+            205
+          ]
+        ],
+        "per_class": {
+          "消极": {
+            "precision": 0.717948717948718,
+            "recall": 0.6256983240223464,
+            "f1-score": 0.6686567164179105,
+            "support": 179.0
+          },
+          "中性": {
+            "precision": 0.5656565656565656,
+            "recall": 0.3971631205673759,
+            "f1-score": 0.4666666666666667,
+            "support": 141.0
+          },
+          "积极": {
+            "precision": 0.6788079470198676,
+            "recall": 0.8649789029535865,
+            "f1-score": 0.7606679035250464,
+            "support": 237.0
+          },
+          "accuracy": 0.6696588868940754,
+          "macro avg": {
+            "precision": 0.654137743541717,
+            "recall": 0.6292801158477696,
+            "f1-score": 0.6319970955365412,
+            "support": 557.0
+          },
+          "weighted avg": {
+            "precision": 0.6627430515513553,
+            "recall": 0.6696588868940754,
+            "f1-score": 0.6566747672787109,
+            "support": 557.0
+          }
+        }
+      },
+      "cnn_weighted": {
+        "accuracy": 0.6552962298025135,
+        "macro_f1": 0.6271936193635179,
+        "confusion_matrix": [
+          [
+            121,
+            27,
+            31
+          ],
+          [
+            42,
+            61,
+            38
+          ],
+          [
+            32,
+            22,
+            183
+          ]
+        ],
+        "per_class": {
+          "消极": {
+            "precision": 0.6205128205128205,
+            "recall": 0.6759776536312849,
+            "f1-score": 0.6470588235294118,
+            "support": 179.0
+          },
+          "中性": {
+            "precision": 0.5545454545454546,
+            "recall": 0.4326241134751773,
+            "f1-score": 0.4860557768924303,
+            "support": 141.0
+          },
+          "积极": {
+            "precision": 0.7261904761904762,
+            "recall": 0.7721518987341772,
+            "f1-score": 0.7484662576687117,
+            "support": 237.0
+          },
+          "accuracy": 0.6552962298025135,
+          "macro avg": {
+            "precision": 0.6337495837495838,
+            "recall": 0.6269178886135465,
+            "f1-score": 0.6271936193635179,
+            "support": 557.0
+          },
+          "weighted avg": {
+            "precision": 0.6487788991379656,
+            "recall": 0.6552962298025135,
+            "f1-score": 0.649450443484887,
+            "support": 557.0
+          }
+        }
+      }
+    }
+  }
+}
